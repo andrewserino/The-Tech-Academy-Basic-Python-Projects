@@ -13,19 +13,29 @@ with conn:
 
 with conn:
     cur.execute("INSERT INTO tbl_filenames(col_datatype) VALUES (?)", \
-                ('information.docx'))
+                ('information.docx',))
     cur.execute("INSERT INTO tbl_filenames(col_datatype) VALUES (?)", \
-                ('Hello.txt'))
+                ('Hello.txt',))
     cur.execute("INSERT INTO tbl_filenames(col_datatype) VALUES (?)", \
-                ('myImage.png'))
+                ('myImage.png',))
     cur.execute("INSERT INTO tbl_filenames(col_datatype) VALUES (?)", \
-                ('myMovie.mpg'))
+                ('myMovie.mpg',))
     cur.execute("INSERT INTO tbl_filenames(col_datatype) VALUES (?)", \
-                ('World.txt'))
+                ('World.txt',))
     cur.execute("INSERT INTO tbl_filenames(col_datatype) VALUES (?)", \
-                ('data.pdf'))
+                ('data.pdf',))
     cur.execute("INSERT INTO tbl_filenames(col_datatype) VALUES (?)", \
-                ('myPhoto.jpg'))
+                ('myPhoto.jpg',))
     conn.commit()
 conn.close()
+
+str_x = '.txt'
+
+str_y = '.pdf, .docx, .png, .mpg, .jpg'
+
+if str_x == str_y:
+    print ("Same file format")
+
+else:
+    print (".txt file")
 
