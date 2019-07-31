@@ -29,13 +29,13 @@ with conn:
     conn.commit()
 conn.close()
 
-str_x = '.txt'
 
-str_y = '.pdf, .docx, .png, .mpg, .jpg'
+fileList = ('information.docx','Hello.txt','myImage.png', \
+            'myMovie.mpg','World.txt','data.pdf','myPhoto.jpg')
 
-if str_x == str_y:
-    print ("Same file format")
-
-else:
-    print (".txt file")
+result = fileList.endswith('.txt')
+for result in fileList:
+    if result == ".txt":
+        break
+    print(result)
 
