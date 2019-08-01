@@ -3,6 +3,9 @@ import sqlite3
 
 conn = sqlite3.connect('drill103.db')
 
+fileList = ('information.docx','Hello.txt','myImage.png', \
+            'myMovie.mpg','World.txt','data.pdf','myPhoto.jpg')
+
 with conn:
     cur = conn.cursor()
     cur.execute("CREATE TABLE IF NOT EXISTS tbl_filenames ( \
@@ -12,30 +15,16 @@ with conn:
     conn.commit()
 
 with conn:
-    cur.execute("INSERT INTO tbl_filenames(col_datatype) VALUES (?)", \
-                ('information.docx',))
-    cur.execute("INSERT INTO tbl_filenames(col_datatype) VALUES (?)", \
-                ('Hello.txt',))
-    cur.execute("INSERT INTO tbl_filenames(col_datatype) VALUES (?)", \
-                ('myImage.png',))
-    cur.execute("INSERT INTO tbl_filenames(col_datatype) VALUES (?)", \
-                ('myMovie.mpg',))
-    cur.execute("INSERT INTO tbl_filenames(col_datatype) VALUES (?)", \
-                ('World.txt',))
-    cur.execute("INSERT INTO tbl_filenames(col_datatype) VALUES (?)", \
-                ('data.pdf',))
-    cur.execute("INSERT INTO tbl_filenames(col_datatype) VALUES (?)", \
-                ('myPhoto.jpg',))
+    cur = conn.cursor()
+    for file in fileList:
+        if file.endswith('.txt'):
+            print(file)
+
+            cur.execute('INSERT INTO tbl_filenames(col_datatype) VALUES(?)',(file,))
+            
     conn.commit()
 conn.close()
 
 
-fileList = ('information.docx','Hello.txt','myImage.png', \
-            'myMovie.mpg','World.txt','data.pdf','myPhoto.jpg')
 
-result = fileList.endswith('.txt')
-for result in fileList:
-    if result == ".txt":
-        break
-    print(result)
 
